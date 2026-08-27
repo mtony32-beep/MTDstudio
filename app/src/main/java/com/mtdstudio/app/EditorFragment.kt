@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 class EditorFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val tv = TextView(requireContext())
-        tv.text = "📂 Editor — Buka & Edit File\n\nSiap untuk menulis kode!"
+        tv.text = "📂 Editor\n\nFitur sedang dikembangkan."
         tv.textSize = 20f
         tv.setPadding(40, 80, 40, 40)
         return tv
