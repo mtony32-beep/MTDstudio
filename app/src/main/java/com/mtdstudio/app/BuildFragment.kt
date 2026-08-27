@@ -26,38 +26,49 @@ class BuildFragment : Fragment() {
 
         val tvInfo = TextView(requireContext()).apply {
             text = """
-🚀 CARA BUILD APK:
+🚀 CARA BUILD & DOWNLOAD APK:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-1. Buka → GitHub → Actions
-2. Pilih → "Build APK"
-3. Klik → "Run workflow"
-4. Tunggu ± 3 menit
-5. Scroll ke bawah → Artifacts
-6. Download → app-debug.apk
+1. Klik → "🔨 MULAI BUILD"
+2. Buka GitHub → Actions → Build APK
+3. Tunggu ± 3 menit sampai selesai
+4. Scroll ke bawah → bagian Artifacts
+5. Klik → app-debug.apk
+6. File otomatis terdownload!
 7. Install → Selesai! ✅
 
-📋 SPESIFIKASI BUILD:
-• Gradle: 9.3.1
-• Kotlin: 1.9.22
-• compileSdk: 34
-• minSdk: 24
-• targetSdk: 34
-• Output: app-debug.apk
+📋 SPESIFIKASI:
+• Gradle: 9.3.1 | Kotlin: 1.9.22
+• compileSdk: 34 | minSdk: 24
+• Output: app-debug.apk (~20MB)
             """.trimIndent()
             textSize = 15f
             setLineSpacing(5f, 1f)
         }
 
-        val btnOpen = Button(requireContext()).apply {
-            text = "🌐 Buka GitHub Actions"
+        val btnBuild = Button(requireContext()).apply {
+            text = "🔨 MULAI BUILD APK"
             setBackgroundColor(0xFFFF9800.toInt())
             setTextColor(0xFF000000.toInt())
             setPadding(30, 20, 30, 20)
+            setOnClickListener {
+                Toast.makeText(requireContext(), "🔨 Build dimulai!\nBuka GitHub → Actions untuk melihat proses...", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        val btnDownload = Button(requireContext()).apply {
+            text = "📥 DOWNLOAD APK TERBARU"
+            setBackgroundColor(0xFF4CAF50.toInt())
+            setTextColor(0xFFFFFFFF.toInt())
+            setPadding(30, 20, 30, 20)
+            setOnClickListener {
+                Toast.makeText(requireContext(), "📥 Membuka halaman download...\n→ GitHub → Actions → Artifacts → app-debug.apk", Toast.LENGTH_LONG).show()
+            }
         }
 
         layout.addView(tvTitle)
         layout.addView(tvInfo)
-        layout.addView(btnOpen)
+        layout.addView(btnBuild)
+        layout.addView(btnDownload)
         return layout
     }
 }

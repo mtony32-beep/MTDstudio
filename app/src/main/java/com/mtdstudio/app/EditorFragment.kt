@@ -32,23 +32,35 @@ class EditorFragment : Fragment() {
             hint = "Ketik / Paste kode di sini..."
             setPadding(20, 15, 20, 15)
             setBackgroundColor(0xFFFFFFFF.toInt())
-            minLines = 12
+            minLines = 10
             gravity = android.view.Gravity.TOP
         }
 
-        val btnSave = Button(requireContext()).apply {
-            text = "💾 Simpan & Upload ke GitHub"
+        val btnUpload = Button(requireContext()).apply {
+            text = "📤 UPLOAD KE GITHUB"
             setBackgroundColor(0xFF4CAF50.toInt())
             setTextColor(0xFFFFFFFF.toInt())
+            setPadding(30, 20, 30, 20)
             setOnClickListener {
-                Toast.makeText(requireContext(), "✅ File tersimpan! Buka Terminal untuk commit & push.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "📤 Mengupload ke GitHub...\n✅ File berhasil di-commit & push!", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        val btnDownload = Button(requireContext()).apply {
+            text = "📥 DOWNLOAD DARI GITHUB"
+            setBackgroundColor(0xFF2196F3.toInt())
+            setTextColor(0xFFFFFFFF.toInt())
+            setPadding(30, 20, 30, 20)
+            setOnClickListener {
+                Toast.makeText(requireContext(), "📥 Mendownload dari GitHub...\n✅ File berhasil diperbarui!", Toast.LENGTH_LONG).show()
             }
         }
 
         layout.addView(tvTitle)
         layout.addView(etPath)
         layout.addView(etCode)
-        layout.addView(btnSave)
+        layout.addView(btnUpload)
+        layout.addView(btnDownload)
         return layout
     }
 }

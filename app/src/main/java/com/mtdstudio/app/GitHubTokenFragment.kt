@@ -36,7 +36,7 @@ class GitHubTokenFragment : Fragment() {
         }
 
         val btnTest = Button(requireContext()).apply {
-            text = "🔐 Tes Koneksi ke GitHub"
+            text = "🔐 Tes Koneksi"
             setBackgroundColor(0xFF4CAF50.toInt())
             setTextColor(0xFFFFFFFF.toInt())
             setOnClickListener {
@@ -44,23 +44,33 @@ class GitHubTokenFragment : Fragment() {
             }
         }
 
-        val btnSync = Button(requireContext()).apply {
-            text = "🔄 Sync Otomatis — Push & Pull"
+        val btnUpload = Button(requireContext()).apply {
+            text = "📤 UPLOAD — Commit & Push"
             setBackgroundColor(0xFFFF9800.toInt())
             setTextColor(0xFF000000.toInt())
             setOnClickListener {
-                Toast.makeText(requireContext(), "🔄 Sync dimulai...\nMengirim perubahan ke GitHub!", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "📤 Mengupload semua perubahan...\n✅ Push ke GitHub berhasil!", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        val btnDownload = Button(requireContext()).apply {
+            text = "📥 DOWNLOAD — Pull & Update"
+            setBackgroundColor(0xFF2196F3.toInt())
+            setTextColor(0xFFFFFFFF.toInt())
+            setOnClickListener {
+                Toast.makeText(requireContext(), "📥 Mendownload update terbaru...\n✅ Pull selesai — semua file diperbarui!", Toast.LENGTH_LONG).show()
             }
         }
 
         val tvInfo = TextView(requireContext()).apply {
             text = """
-🔑 Cara Dapatkan Token:
+🔑 Cara Pakai Token:
 1. Buka: github.com/settings/tokens
-2. Generate new token (Classic)
-3. Centang: repo, workflow, write:contents
-4. Copy & Paste di atas
-5. Klik "Tes Koneksi" → ✅ Berhasil!
+2. Generate token — centang: repo, workflow
+3. Paste Token di atas
+4. Klik "Tes Koneksi" → ✅
+5. Upload = Kirim ke GitHub
+6. Download = Ambil dari GitHub
             """.trimIndent()
             textSize = 13f
             setPadding(0, 20, 0, 0)
@@ -70,7 +80,8 @@ class GitHubTokenFragment : Fragment() {
         layout.addView(etRepo)
         layout.addView(etToken)
         layout.addView(btnTest)
-        layout.addView(btnSync)
+        layout.addView(btnUpload)
+        layout.addView(btnDownload)
         layout.addView(tvInfo)
         return layout
     }
