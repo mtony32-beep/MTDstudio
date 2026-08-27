@@ -25,9 +25,21 @@ class MainActivity : AppCompatActivity() {
                     }
                     true
                 }
+                R.id.nav_ai -> {
+                    supportFragmentManager.commit {
+                        replace(R.id.fragment_container, GeminiAIFragment())
+                    }
+                    true
+                }
                 R.id.nav_github -> {
                     supportFragmentManager.commit {
-                        replace(R.id.fragment_container, GithubFragment())
+                        replace(R.id.fragment_container, GitHubTokenFragment())
+                    }
+                    true
+                }
+                R.id.nav_terminal -> {
+                    supportFragmentManager.commit {
+                        replace(R.id.fragment_container, TerminalFragment())
                     }
                     true
                 }
@@ -40,8 +52,7 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-        
-        // Fragment default saat pertama dibuka
+
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
                 replace(R.id.fragment_container, MainFragment())
